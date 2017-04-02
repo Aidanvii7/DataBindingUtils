@@ -1,0 +1,8 @@
+include ':databinding'
+include ':databinding-imageview'
+include ':databinding-imageview-glide'
+include ':databinding-recyclerview'
+include ':databinding-recyclerview-list'
+include ':databinding-recyclerview-observablelist'
+include ':databinding-recyclerview-observablesortedlist'
+include ':databinding-recyclerview-observablemap'
