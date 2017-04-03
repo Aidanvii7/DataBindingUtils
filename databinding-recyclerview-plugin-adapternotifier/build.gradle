@@ -24,7 +24,6 @@ android {
     dataBinding {
         enabled true
     }
-
 }
 
 dependencies {
@@ -32,6 +31,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    compile project(path: ':databinding-recyclerview')
+    compile project(path: ':databinding-notifiable')
 
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile "junit:junit:$junitVersion"

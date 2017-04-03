@@ -33,6 +33,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    compile project(path: ':databinding')
+
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile "junit:junit:$junitVersion"
 }

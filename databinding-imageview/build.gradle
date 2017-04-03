@@ -37,5 +37,6 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:$supportVersion"
 
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile "junit:junit:$junitVersion"
 }

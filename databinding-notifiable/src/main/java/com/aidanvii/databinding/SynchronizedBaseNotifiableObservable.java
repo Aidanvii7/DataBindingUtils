@@ -3,16 +3,16 @@ package com.aidanvii.databinding;
 import android.databinding.Observable;
 import android.support.annotation.NonNull;
 /**
- * Created by aidan.mcwilliams@vimn.com on 02/04/17.
+ * Created by aidan.vii@gmail.com on 02/04/17.
  */
 
-class SynchronizedDelegateBaseObservable extends DelegateBaseObservable {
+class SynchronizedBaseNotifiableObservable extends BaseNotifiableObservable {
 
-    public SynchronizedDelegateBaseObservable() {
+    public SynchronizedBaseNotifiableObservable() {
         super();
     }
 
-    public SynchronizedDelegateBaseObservable(@NonNull final Observable observable) {
+    public SynchronizedBaseNotifiableObservable(@NonNull final Observable observable) {
     }
 
     @Override

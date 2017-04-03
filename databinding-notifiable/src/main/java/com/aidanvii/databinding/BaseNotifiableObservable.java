@@ -4,23 +4,25 @@ import android.databinding.Bindable;
 import android.databinding.Observable;
 import android.databinding.PropertyChangeRegistry;
 import android.support.annotation.NonNull;
+
+import static com.aidanvii.databinding.utils.Preconditions.checkArgumentIsNotNull;
 /**
  * Created by aidan.vii@gmail.com on 20/02/17.
  */
 
-public class DelegateBaseObservable implements Observable {
+public class BaseNotifiableObservable implements NotifiableObservable {
 
     private static final int ALL_PROPERTIES = 0;
 
     protected final Observable observable;
     private PropertyChangeRegistry propertyChangeRegistry;
 
-    public DelegateBaseObservable() {
+    public BaseNotifiableObservable() {
         this.observable = this;
     }
 
-    public DelegateBaseObservable(@NonNull final Observable observable) {
-        this.observable = observable;
+    public BaseNotifiableObservable(@NonNull final Observable observable) {
+        this.observable = checkArgumentIsNotNull(observable);
     }
 
     @Override
@@ -41,6 +43,7 @@ public class DelegateBaseObservable implements Observable {
     /**
      * Notifies listeners that all properties of this instance have changed.
      */
+    @Override
     public void notifyChange() {
         if (propertyChangeRegistry != null) {
             propertyChangeRegistry.notifyCallbacks(observable, ALL_PROPERTIES, null);
@@ -54,6 +57,7 @@ public class DelegateBaseObservable implements Observable {
      *
      * @param propertyId The generated BR id for the {@link Bindable} field.
      */
+    @Override
     public void notifyPropertyChanged(int propertyId) {
         if (propertyChangeRegistry != null) {
             propertyChangeRegistry.notifyCallbacks(observable, propertyId, null);

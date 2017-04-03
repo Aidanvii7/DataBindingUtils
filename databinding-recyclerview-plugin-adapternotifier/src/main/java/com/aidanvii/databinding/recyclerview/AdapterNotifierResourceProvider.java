@@ -1,13 +1,12 @@
 package com.aidanvii.databinding.recyclerview;
 
-import com.aidanvii.databinding.DelegateBaseObservable;
+import com.aidanvii.databinding.NotifiableObservable;
 /**
  * Created by aidan.vii@gmail.com on 30/03/17.
  */
-
 public interface AdapterNotifierResourceProvider extends ResourceIdProvider {
 
-    void setDelegateBaseObservable(DelegateBaseObservable delegateBaseObservable);
+    void setNotifiableObservable(NotifiableObservable notifiableObservable);
 
     void notifyAdapterPropertyChanged(int property);
 
@@ -19,8 +18,8 @@ public interface AdapterNotifierResourceProvider extends ResourceIdProvider {
 
     void adapterBindEnd();
 
-    void pauseNotifications();
+    void beginBatchedUpdates();
 
-    void resumeNotifications();
+    void endBatchedUpdates();
 
 }

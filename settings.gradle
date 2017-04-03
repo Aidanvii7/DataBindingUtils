@@ -1,4 +1,4 @@
-include ':databinding'
+include ':databinding', ':databinding-kotlin', ':databinding-notifiable', ':databinding-notifiable-bindlistener', ':databinding-recyclerview-plugin-adapternotifier', ':kotlin', ':databinding-notifiable-kotlin', ':databinding-recyclerview-plugin-adapternotifier-kotlin'
 include ':databinding-imageview'
 include ':databinding-imageview-glide'
 include ':databinding-recyclerview'

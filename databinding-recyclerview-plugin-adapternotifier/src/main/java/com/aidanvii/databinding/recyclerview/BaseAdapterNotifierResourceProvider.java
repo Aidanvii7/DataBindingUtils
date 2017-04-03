@@ -5,7 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 
-import com.aidanvii.databinding.DelegateBaseObservable;
+import com.aidanvii.databinding.BaseNotifiableObservable;
+import com.aidanvii.databinding.NotifiableObservable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,6 @@ import static com.aidanvii.databinding.recyclerview.BitwiseUtil.isTrue;
 import static com.aidanvii.databinding.recyclerview.BitwiseUtil.setFalse;
 import static com.aidanvii.databinding.recyclerview.BitwiseUtil.setTrue;
 import static com.aidanvii.databinding.recyclerview.Util.notEmpty;
-import static com.aidanvii.databinding.recyclerview.Util.toIntArray;
 import static com.aidanvii.databinding.utils.Preconditions.checkArgumentIsNotNull;
 
 /**
@@ -30,7 +30,7 @@ class BaseAdapterNotifierResourceProvider implements AdapterNotifierResourceProv
     private final List<Integer> pendingChangedProperties;
 
     @Nullable
-    private DelegateBaseObservable delegateBaseObservable;
+    private NotifiableObservable notifiableObservable;
     @Nullable
     private BindingAdapter<?> adapter;
     private int flags = 0;
@@ -47,13 +47,13 @@ class BaseAdapterNotifierResourceProvider implements AdapterNotifierResourceProv
     public static BaseAdapterNotifierResourceProvider createWithDelegate(@NonNull Observable delegate) {
         checkArgumentIsNotNull(delegate);
         final BaseAdapterNotifierResourceProvider instance = new BaseAdapterNotifierResourceProvider();
-        instance.setDelegateBaseObservable(new DelegateBaseObservable(delegate));
+        instance.setNotifiableObservable(new BaseNotifiableObservable(delegate));
         return instance;
     }
 
     @Override
-    public void setDelegateBaseObservable(@Nullable final DelegateBaseObservable delegateBaseObservable) {
-        this.delegateBaseObservable = delegateBaseObservable;
+    public void setNotifiableObservable(@Nullable final NotifiableObservable notifiableObservable) {
+        this.notifiableObservable = notifiableObservable;
     }
 
     @Override
@@ -86,14 +86,14 @@ class BaseAdapterNotifierResourceProvider implements AdapterNotifierResourceProv
     }
 
     @Override
-    public void pauseNotifications() {
+    public void beginBatchedUpdates() {
         flags = setTrue(flags, NOTIFY_PAUSED);
     }
 
     @Override
-    public void resumeNotifications() {
+    public void endBatchedUpdates() {
         flags = setFalse(flags, NOTIFY_PAUSED);
-        notifyAdapterPropertiesChanged(toIntArray(pendingChangedProperties));
+        notifyAdapterPropertiesChanged(Util.toIntArray(pendingChangedProperties));
         pendingChangedProperties.clear();
     }
 
@@ -110,9 +110,9 @@ class BaseAdapterNotifierResourceProvider implements AdapterNotifierResourceProv
     private void notifyAdapterPropertiesChanged(@Nullable int... properties) {
         if (adapter != null && notEmpty(properties)) {
             if (!tryPostponePropertyChanges(properties)) {
-                if (isTrue(flags, ADAPTER_BINDING) && delegateBaseObservable != null) {
+                if (isTrue(flags, ADAPTER_BINDING) && notifiableObservable != null) {
                     for (final int property : properties) {
-                        delegateBaseObservable.notifyPropertyChanged(property);
+                        notifiableObservable.notifyPropertyChanged(property);
                     }
                 } else {
                     adapter.notifyItemChanged(curPosition, properties);
