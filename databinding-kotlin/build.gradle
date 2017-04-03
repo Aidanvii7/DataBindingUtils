@@ -2,6 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+ext {
+    PUBLISH_GROUP_ID = 'com.aidanvii.toolbox'
+    PUBLISH_ARTIFACT_ID = 'databinding-kotlin'
+    PUBLISH_VERSION = toolboxVersion
+}
+
 android {
     apply from: "$rootDir/versions.gradle"
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -32,6 +38,10 @@ android {
         enabled true
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -40,8 +50,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile project(path: ':kotlin')
-    compile project(path: ':databinding')
+    debugCompile project(path: ':kotlin')
+    releaseCompile "com.aidanvii.toolbox:kotlin:$toolboxVersion"
+
+    debugCompile project(path: ':databinding')
+    releaseCompile "com.aidanvii.toolbox:databinding:$toolboxVersion"
 
 
     testCompile "junit:junit:$junitVersion"
@@ -50,3 +63,5 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
     kapt "com.android.databinding:compiler:$androidPluginVersion"
 }
+
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'

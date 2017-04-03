@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-          package="com.aidanvii.databinding.notifiable.kotlin"
+          package="com.aidanvii.toolbox.databinding.notifiable.kotlin"
 >
 
     <application android:allowBackup="true"

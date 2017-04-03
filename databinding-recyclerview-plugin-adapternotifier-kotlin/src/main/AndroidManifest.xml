@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-          package="com.aidanvii.databinding.recyclerview.plugin.adapternotifier.kotlin"
+          package="com.aidanvii.toolbox.databinding.recyclerview.plugin.adapternotifier.kotlin"
 >
 
     <application android:allowBackup="true"

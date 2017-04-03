@@ -1,4 +1,4 @@
-package com.aidanvii.kotlin
+package com.aidanvii.toolbox.kotlin
 
 import kotlin.properties.ObservableProperty
 import kotlin.reflect.KProperty

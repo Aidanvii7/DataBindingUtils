@@ -2,6 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+ext {
+    PUBLISH_GROUP_ID = 'com.aidanvii.toolbox'
+    PUBLISH_ARTIFACT_ID = 'kotlin'
+    PUBLISH_VERSION = toolboxVersion
+}
+
 android {
     apply from: "$rootDir/versions.gradle"
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -43,3 +49,5 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
 }
+
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'

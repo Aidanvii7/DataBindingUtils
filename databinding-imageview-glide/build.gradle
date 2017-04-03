@@ -1,5 +1,11 @@
 apply plugin: 'com.android.library'
 
+ext {
+    PUBLISH_GROUP_ID = 'com.aidanvii.toolbox'
+    PUBLISH_ARTIFACT_ID = 'databinding-imageview-glide'
+    PUBLISH_VERSION = toolboxVersion
+}
+
 android {
     apply from: "$rootDir/versions.gradle"
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -24,6 +30,10 @@ android {
     dataBinding {
         enabled true
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -34,7 +44,10 @@ dependencies {
 
     compile "com.github.bumptech.glide:glide:$glideVersion"
 
-    compile project(path: ':databinding-imageview')
+    debugCompile project(path: ':databinding-imageview')
+    releaseCompile "com.aidanvii.toolbox:databinding-imageview:$toolboxVersion"
 
     testCompile "junit:junit:$junitVersion"
 }
+
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'

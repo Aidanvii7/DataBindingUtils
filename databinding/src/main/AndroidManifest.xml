@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.aidanvii.databinding">
+          package="com.aidanvii.toolbox.databinding">
 
     <application
         android:allowBackup="true"

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.aidanvii.databinding.recyclerview">
+          package="com.aidanvii.toolbox.databinding.recyclerview">
 
     <application android:allowBackup="true"
                  android:supportsRtl="true">

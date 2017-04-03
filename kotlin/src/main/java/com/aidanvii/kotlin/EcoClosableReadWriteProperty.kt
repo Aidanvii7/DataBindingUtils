@@ -1,4 +1,4 @@
-package com.aidanvii.kotlin
+package com.aidanvii.toolbox.kotlin
 
 import java.io.Closeable
 import kotlin.properties.ReadWriteProperty

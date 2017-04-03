@@ -1,5 +1,11 @@
 apply plugin: 'com.android.library'
 
+ext {
+    PUBLISH_GROUP_ID = 'com.aidanvii.toolbox'
+    PUBLISH_ARTIFACT_ID = 'databinding-imageview'
+    PUBLISH_VERSION = toolboxVersion
+}
+
 android {
     apply from: "$rootDir/versions.gradle"
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -25,6 +31,10 @@ android {
         enabled true
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -33,10 +43,13 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile project(path: ':databinding')
+    debugCompile project(path: ':databinding')
+    releaseCompile "com.aidanvii.toolbox:databinding:$toolboxVersion"
 
     compile "com.android.support:appcompat-v7:$supportVersion"
 
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile "junit:junit:$junitVersion"
 }
+
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
