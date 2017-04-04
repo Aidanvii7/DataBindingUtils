@@ -22,7 +22,7 @@ import static com.aidanvii.toolbox.databinding.utils.Preconditions.checkArgument
 /**
  * Created by aidan.vii@gmail.com on 30/03/17.
  */
-class BaseAdapterNotifierResourceProvider implements AdapterNotifierResourceProvider {
+public class BaseAdapterNotifierResourceProvider implements AdapterNotifierResourceProvider {
 
     private static final int NOTIFY_PAUSED = FLAG_1();
     private static final int ADAPTER_BINDING = FLAG_2();
