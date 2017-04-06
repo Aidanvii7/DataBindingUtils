@@ -14,11 +14,16 @@ public class BaseNotifiableObservable implements NotifiableObservable {
 
     private static final int ALL_PROPERTIES = 0;
 
-    protected final Observable observable;
+    private Observable observable;
     private PropertyChangeRegistry propertyChangeRegistry;
 
     public BaseNotifiableObservable() {
-        this.observable = this;
+        observable = this;
+    }
+
+    @Override
+    public void delegateTo(@NonNull final NotifiableObservable notifiableObservable) {
+        observable = checkArgumentIsNotNull(notifiableObservable);
     }
 
     public BaseNotifiableObservable(@NonNull final Observable observable) {

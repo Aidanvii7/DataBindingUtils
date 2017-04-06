@@ -17,21 +17,21 @@ class SynchronizedBaseNotifiableObservable extends BaseNotifiableObservable {
 
     @Override
     public void addOnPropertyChangedCallback(final Observable.OnPropertyChangedCallback callback) {
-        synchronized (observable) {
+        synchronized (this) {
             super.addOnPropertyChangedCallback(callback);
         }
     }
 
     @Override
     public void removeOnPropertyChangedCallback(final Observable.OnPropertyChangedCallback callback) {
-        synchronized (observable) {
+        synchronized (this) {
             super.removeOnPropertyChangedCallback(callback);
         }
     }
 
     @Override
     public void notifyChange() {
-        synchronized (observable) {
+        synchronized (this) {
             super.notifyChange();
         }
     }

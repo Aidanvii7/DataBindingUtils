@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 
 ext {
     PUBLISH_GROUP_ID = 'com.aidanvii.toolbox'
-    PUBLISH_ARTIFACT_ID = 'databinding-recyclerview-plugin-adapternotifier-kotlin'
+        PUBLISH_ARTIFACT_ID = 'databinding-recyclerview-plugin-adapternotifier-kotlin'
     PUBLISH_VERSION = toolboxVersion
 }
 

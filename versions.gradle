@@ -1,5 +1,5 @@
 ext {
-    toolboxVersion = '0.1.2'
+    toolboxVersion = '0.1.4'
     minSdkVersion = 16
     minDebugSdkVersion = 23
     targetSdkVersion = 25

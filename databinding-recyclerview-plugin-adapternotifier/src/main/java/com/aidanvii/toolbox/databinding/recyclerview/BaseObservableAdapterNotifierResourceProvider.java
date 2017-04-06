@@ -54,6 +54,11 @@ public class BaseObservableAdapterNotifierResourceProvider implements Observable
     }
 
     @Override
+    public void delegateTo(@NonNull final NotifiableObservable notifiableObservable) {
+        this.notifiableObservable.delegateTo(notifiableObservable);
+    }
+
+    @Override
     public void notifyPropertyChanged(final int propertyId) {
         notifiableObservable.notifyPropertyChanged(propertyId);
     }
