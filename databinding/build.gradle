@@ -39,13 +39,17 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
     dataBinding.enabled = true
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation "android.arch.lifecycle:extensions:$android_arch_lifecycle_extensions"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile "android.arch.lifecycle:extensions:$android_arch_lifecycle_extensions"
 
     /* Test specific dependencies */
     testCompile "junit:junit:$junit_version"

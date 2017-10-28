@@ -5,7 +5,7 @@ ext {
     compile_sdk_version = System.getenv("COMPILE_SDK_VERSION") ?: 27
     build_tools_version = System.getenv("BUILD_TOOLS_VERSION") ?: "26.0.2"
     kotlin_version = System.getenv("KOTLIN_VERSION") ?: '1.1.51'
-    android_gradle_plugin_version = System.getenv("ANDROID_GRADLE_PLUGIN_VERSION") ?: '3.0.0'
+    android_gradle_plugin_version = System.getenv("ANDROID_GRADLE_PLUGIN_VERSION") ?: '2.3.3'
     android_arch_lifecycle_extensions = System.getenv("ANDROID_ARCH_LIFECYCLE_EXTENSIONS") ?: '1.0.0-rc1'
     android_support_version = System.getenv("ANDROID_SUPPORT_VERSION") ?: '27.0.0'
     rxjava_version = System.getenv("RXJAVA_2_VERSION") ?: '2.1.1'
