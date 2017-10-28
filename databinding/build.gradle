@@ -1,19 +1,20 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 ext {
     PUBLISH_GROUP_ID = 'com.aidanvii.toolbox'
     PUBLISH_ARTIFACT_ID = 'databinding'
-    PUBLISH_VERSION = toolboxVersion
+    PUBLISH_VERSION = toolbox_version
 }
 
 android {
     apply from: "$rootDir/versions.gradle"
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
         versionCode 1
         versionName "1.0"
 
@@ -27,24 +28,31 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    sourceSets {
+        main {
+            java.srcDir "src/main/kotlin"
+            kotlin.srcDir "src/main/kotlin"
+        }
+        test {
+            java.srcDir "src/test/kotlin"
+            kotlin.srcDir "src/test/kotlin"
+        }
     }
 
-    lintOptions {
-        abortOnError false
-    }
-
+    dataBinding.enabled = true
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
 
-    testCompile "org.mockito:mockito-core:$mockitoVersion"
-    testCompile "junit:junit:$junitVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "android.arch.lifecycle:extensions:$android_arch_lifecycle_extensions"
+
+    /* Test specific dependencies */
+    testCompile "junit:junit:$junit_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testCompile "com.nhaarman:mockito-kotlin:$kotlin_mockito_version"
+    testCompile "org.amshove.kluent:kluent:$kluent_version"
+    testCompile 'de.jodamob.android:SuperReflect:1.0.1'
 }
 
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'

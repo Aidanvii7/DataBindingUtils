@@ -1,26 +1,18 @@
 ext {
-    toolboxVersion = '0.1.4'
-    minSdkVersion = 16
-    minDebugSdkVersion = 23
-    targetSdkVersion = 25
-    compileSdkVersion = 25
-    buildToolsVersion  = "25.0.2"
-    kotlinVersion = '1.1.1'
-    androidPluginVersion = '2.3.0'
-    multidexApplicationVersion = '1.0.1'
-    supportVersion = '25.2.0'
-    daggerVersion = '2.8'
-    retrofitVersion = '2.1.0'
-    superReflectVersion = '1.0.1'
-    espressoVersion = '2.2.2'
-    mockitoVersion = '2.7.19'
-    mockitoKotlinVersion = '1.4.0'
-    constraintLayoutVersion = '1.0.2'
-    rxjava2Version = '2.0.5'
-    rxandroid2Version = '2.0.1'
-    rxrelay2Version = '2.0.0'
-    glideVersion = '3.7.0'
-    junitVersion = '4.12'
-    autoValueVersion = '1.4-rc1'
-    retrolambdaVersion = '3.3.0-beta4'
+    toolbox_version = '0.2.0'
+    min_sdk_version = System.getenv("MIN_SDK_VERSION") ?: 19
+    target_sdk_version = System.getenv("TARGET_SDK_VERSION") ?: 27
+    compile_sdk_version = System.getenv("COMPILE_SDK_VERSION") ?: 27
+    build_tools_version = System.getenv("BUILD_TOOLS_VERSION") ?: "26.0.2"
+    kotlin_version = System.getenv("KOTLIN_VERSION") ?: '1.1.51'
+    android_gradle_plugin_version = System.getenv("ANDROID_GRADLE_PLUGIN_VERSION") ?: '3.0.0'
+    android_arch_lifecycle_extensions = System.getenv("ANDROID_ARCH_LIFECYCLE_EXTENSIONS") ?: '1.0.0-rc1'
+    android_support_version = System.getenv("ANDROID_SUPPORT_VERSION") ?: '27.0.0'
+    rxjava_version = System.getenv("RXJAVA_2_VERSION") ?: '2.1.1'
+    rxkotlin_version = System.getenv("RXKOTLIN_2_VERSION") ?: '2.1.0'
+    rxandroid_version = System.getenv("RXANDROID_2_VERSION") ?: '2.0.1'
+
+    kotlin_mockito_version = '1.4.0'
+    junit_version = '4.12'
+    kluent_version = '1.21'
 }
